@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<DialogPane xmlns="http://javafx.com/javafx"
+			xmlns:fx="http://javafx.com/fxml"
+			prefHeight="400.0" prefWidth="600.0" headerText="Inicie sesión para continuar">
+
+	<content>
+		<VBox spacing="20" VBox.vgrow="ALWAYS">
+			<padding>
+				<Insets left="120" top="100" />
+			</padding>
+			<HBox>
+				<Label text="Usuario" textAlignment="RIGHT" minWidth="100"/>
+				<TextField fx:id="usuarioField" />
+			</HBox>
+			<HBox>
+				<Label text="Contraseña" textAlignment="RIGHT" minWidth="100"/>
+				<PasswordField fx:id="passwordField" />
+			</HBox>
+		</VBox>
+	</content>
+	<ButtonType fx:id="loginButtonType" text="Iniciar sesión" buttonData="OK_DONE"/>
+	<ButtonType text="Salir" buttonData="CANCEL_CLOSE"/>
+</DialogPane>

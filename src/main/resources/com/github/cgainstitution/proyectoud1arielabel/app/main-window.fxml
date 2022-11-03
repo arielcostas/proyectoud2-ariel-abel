@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<VBox alignment="TOP_CENTER" minHeight="600.0" minWidth="800.0" spacing="20" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.cgainstitution.proyectoud1arielabel.app.controller.MainWindowController">
+
+	<ToolBar>
+		<Button onAction="#onGuardarJson" contentDisplay="GRAPHIC_ONLY">
+			<graphic>
+				<ImageView>
+					<Image url="@filetype-json.png" requestedWidth="32" requestedHeight="32"/>
+				</ImageView>
+			</graphic>
+		</Button>
+		<Button onAction="#onGuardarXml" contentDisplay="GRAPHIC_ONLY">
+			<graphic>
+				<ImageView>
+					<Image url="@filetype-xml.png" requestedWidth="32" requestedHeight="32"/>
+				</ImageView>
+			</graphic>
+		</Button>
+		<Button onAction="#onGuardarTexto" contentDisplay="GRAPHIC_ONLY">
+			<graphic>
+				<ImageView>
+					<Image url="@filetype-csv.png" requestedWidth="32" requestedHeight="32"/>
+				</ImageView>
+			</graphic>
+		</Button>
+		<Button onAction="#onGuardarBinario" contentDisplay="GRAPHIC_ONLY">
+			<graphic>
+				<ImageView>
+					<Image url="@fileytype-binary.png" requestedWidth="32" requestedHeight="32"/>
+				</ImageView>
+			</graphic>
+		</Button>
+		<Button onAction="#onSalir" contentDisplay="GRAPHIC_ONLY">
+			<graphic>
+				<ImageView>
+					<Image url="@salir.png" requestedWidth="32" requestedHeight="32"/>
+				</ImageView>
+			</graphic>
+		</Button>
+	</ToolBar>
+
+	<VBox spacing="20" VBox.vgrow="ALWAYS">
+		<padding>
+			<Insets bottom="20" left="20" right="20" top="20" />
+		</padding>
+		<HBox alignment="BASELINE_CENTER" spacing="10.0">
+			<Label>
+				<font>
+					<Font size="16" />
+				</font>
+				Buscar artista
+			</Label>
+			<TextField fx:id="busquedaArtista" onAction="#onBuscar" HBox.hgrow="ALWAYS">
+				<font>
+					<Font size="16" />
+				</font>
+			</TextField>
+			<Button onAction="#onBuscar" style="-fx-background-color: #ba0000; -fx-font-weight: 800;  -fx-text-fill: white; -fx-font-size: 16px" text="Buscar en Last.fm">
+			</Button>
+		</HBox>
+
+		<TableView fx:id="tablaResultadosBusqueda" items="${controller.artistSearchResults}" VBox.vgrow="ALWAYS">
+			<columnResizePolicy>
+				<!-- Ajusta el tamaño de las columnas y evita que se puedan redimensionar -->
+				<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+			</columnResizePolicy>
+			<columns>
+				<TableColumn text="Nombre">
+					<cellValueFactory>
+						<PropertyValueFactory property="nombre" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn maxWidth="800" text="Oyentes">
+					<cellValueFactory>
+						<PropertyValueFactory property="oyentes" />
+					</cellValueFactory>
+				</TableColumn>
+			</columns>
+		</TableView>
+	</VBox>
+
+</VBox>

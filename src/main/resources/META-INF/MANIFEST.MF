@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Main-Class: com.github.cgainstitution.proyectoud1arielabel.app.Main
+

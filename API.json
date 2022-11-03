@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "45cf167b-1f80-4d58-a8fe-08ce1ebea8f5",
+		"name": "LastFM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Artista por nombre",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=Rianna&format=json",
+					"protocol": "http",
+					"host": [
+						"ws",
+						"audioscrobbler",
+						"com"
+					],
+					"path": [
+						"2.0",
+						""
+					],
+					"query": [
+						{
+							"key": "method",
+							"value": "artist.search"
+						},
+						{
+							"key": "artist",
+							"value": "Rianna"
+						},
+						{
+							"key": "format",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Informacion de artista",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid=db36a76f-4cdf-43ac-8cd0-5e48092d2bae&format=json&lang=es",
+					"protocol": "http",
+					"host": [
+						"ws",
+						"audioscrobbler",
+						"com"
+					],
+					"path": [
+						"2.0",
+						""
+					],
+					"query": [
+						{
+							"key": "method",
+							"value": "artist.getinfo"
+						},
+						{
+							"key": "mbid",
+							"value": "db36a76f-4cdf-43ac-8cd0-5e48092d2bae"
+						},
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Top albums del artista",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Informacion de album",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ws.audioscrobbler.com/2.0/?method=album.getInfo&mbid=92faa683-a1a5-4198-a55d-af3471f14c94&format=json&lang=es",
+					"protocol": "http",
+					"host": [
+						"ws",
+						"audioscrobbler",
+						"com"
+					],
+					"path": [
+						"2.0",
+						""
+					],
+					"query": [
+						{
+							"key": "method",
+							"value": "album.getInfo"
+						},
+						{
+							"key": "mbid",
+							"value": "92faa683-a1a5-4198-a55d-af3471f14c94"
+						},
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "api_key",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "8cdeb95255ffc5aff9ac509c78a6a4e3",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
