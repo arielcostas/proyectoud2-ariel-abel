@@ -1,6 +1,8 @@
 package com.github.cgainstitution.proyectoud1arielabel.app.ui;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
@@ -9,21 +11,21 @@ import java.io.Serializable;
 public class ArtistTableItem implements Serializable {
 	public static final long serialVersionUid = 1L;
 
-	private final SimpleStringProperty mbid = new SimpleStringProperty();
+	private final SimpleIntegerProperty mbid = new SimpleIntegerProperty();
 	private final SimpleStringProperty nombre = new SimpleStringProperty();
-	private final SimpleStringProperty oyentes = new SimpleStringProperty();
+	private final SimpleLongProperty oyentes = new SimpleLongProperty();
 
-	public ArtistTableItem(String mbid, String nombre, String oyentes) {
+	public ArtistTableItem(Integer mbid, String nombre, Long oyentes) {
 		this.mbid.set(mbid);
 		this.nombre.set(nombre);
 		this.oyentes.set(oyentes);
 	}
 
-	public String getMbid() {
+	public Integer getMbid() {
 		return mbid.get();
 	}
 
-	public SimpleStringProperty mbidProperty() {
+	public SimpleIntegerProperty mbidProperty() {
 		return mbid;
 	}
 
@@ -35,11 +37,11 @@ public class ArtistTableItem implements Serializable {
 		return nombre;
 	}
 
-	public String getOyentes() {
+	public Long getOyentes() {
 		return oyentes.get();
 	}
 
-	public SimpleStringProperty oyentesProperty() {
+	public SimpleLongProperty oyentesProperty() {
 		return oyentes;
 	}
 }

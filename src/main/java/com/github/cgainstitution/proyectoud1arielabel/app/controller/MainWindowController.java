@@ -61,7 +61,7 @@ public class MainWindowController {
 						.buscarArtistas(busquedaArtista.getText())
 						.forEach(artista -> {
 							artistSearchResults.add(
-									new ArtistTableItem(artista.mbid(), artista.nombre(), artista.oyentes())
+									new ArtistTableItem(artista.id(), artista.name(), artista.leadStreams())
 							);
 						});
 				scene.setCursor(Cursor.DEFAULT);

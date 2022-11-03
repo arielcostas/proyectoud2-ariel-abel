@@ -6,10 +6,9 @@ import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.github.cgainstitution.proyectoud1arielabel.app.datasource.JDBCDataSource;
-import com.github.cgainstitution.proyectoud1arielabel.app.dto.ArtistaDetallesDto;
-import com.github.cgainstitution.proyectoud1arielabel.app.dto.ArtistaDto;
-import com.github.cgainstitution.proyectoud1arielabel.app.dto.ListaArtistas;
-import com.github.cgainstitution.proyectoud1arielabel.app.models.artistInfo.TagItem;
+import com.github.cgainstitution.proyectoud1arielabel.app.models.Artista;
+import com.github.cgainstitution.proyectoud1arielabel.app.models.ListaArtistas;
+import com.github.cgainstitution.proyectoud1arielabel.app.models.ResumenArtista;
 import com.github.cgainstitution.proyectoud1arielabel.app.ui.ArtistTableItem;
 
 import java.io.File;
@@ -18,7 +17,6 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MainService {
 	private final JDBCDataSource JDBCDataSource;
@@ -27,14 +25,9 @@ public class MainService {
 		JDBCDataSource = new JDBCDataSource();
 	}
 
-	public List<ArtistaDto> buscarArtistas(String terminoBusqueda) {
+	public List<ResumenArtista> buscarArtistas(String terminoBusqueda) {
 		try {
-			var artistas = JDBCDataSource.buscarArtistas(terminoBusqueda);
-			return artistas
-					.stream()
-					.filter(a -> !a.getMbid().equals(""))
-					.map(a -> new ArtistaDto(a.getMbid(), a.getName(), a.getListeners()))
-					.collect(Collectors.toList());
+			return JDBCDataSource.buscarArtistas(terminoBusqueda);
 		} catch (IOException e) {
 			System.err.println("Hubo un error buscando artistas: " + e.getMessage());
 			return new ArrayList<>();
@@ -48,27 +41,11 @@ public class MainService {
 	 * @param mbidArtista el MBID del artista
 	 * @return los datos del artista
 	 */
-	public ArtistaDetallesDto datosArtista(String mbidArtista) {
+	public Artista datosArtista(String mbidArtista) {
 		try {
-			var artista = JDBCDataSource.datosArtista(mbidArtista);
-
-			// Obtener la imagen en tamaño mediano del artista.
-			var imgUrl = artista.getImage().get(2).getText();
-			// Si la imagen no existe, la URL será una cadena vacía y JavaFX no funcionará bien. Por tanto, se remplaza por el logo.
-			if (imgUrl.equals("")) {
-				imgUrl = "file:logo.png";
-			}
-
-			return new ArtistaDetallesDto(
-					artista.getName(),
-					artista.getBio().getSummary().split("<a href=")[0],
-					artista.getTags().getTag().stream().map(TagItem::getName).collect(Collectors.joining(", ")),
-					artista.getStats().getListeners(),
-					artista.getStats().getPlaycount(),
-					imgUrl
-			);
+			return JDBCDataSource.datosArtista(mbidArtista);
 		} catch (IOException e) {
-			System.err.println("Hubo un error recuperando el artista: " + e.getMessage());
+			System.err.println("Hubo un error buscando artistas: " + e.getMessage());
 			return null;
 		}
 	}
@@ -106,9 +83,9 @@ public class MainService {
 
 	public void guardarArtistasComoBinario(ArrayList<ArtistTableItem> artistas, File destino) {
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(destino))) {
-			oos.writeObject(
-					artistas.stream().map(a -> new ArtistaDto(a.getMbid(), a.getNombre(), a.getOyentes())).collect(Collectors.toList())
-			);
+			/*oos.writeObject(
+					artistas.stream().map(a -> new ResumenArtistaDto(a.getMbid(), a.getNombre(), a.getOyentes())).collect(Collectors.toList())
+			);*/
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}

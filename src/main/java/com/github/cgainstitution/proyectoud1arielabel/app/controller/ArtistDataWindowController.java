@@ -1,6 +1,7 @@
 package com.github.cgainstitution.proyectoud1arielabel.app.controller;
 
 import com.github.cgainstitution.proyectoud1arielabel.app.dto.ArtistaDetallesDto;
+import com.github.cgainstitution.proyectoud1arielabel.app.models.Artista;
 import com.github.cgainstitution.proyectoud1arielabel.app.service.ArtistDataService;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -37,11 +38,11 @@ public class ArtistDataWindowController {
     public Scene escenaBase;
 
     private final ArtistDataService artistDataService = new ArtistDataService();
-    private ArtistaDetallesDto artist;
+    private Artista artista;
 
-    public void initData(ArtistaDetallesDto artist, Scene escenaBase) {
-        this.artist = artist;
-        this.nombre.setText(artist.nombre());
+    public void initData(Artista artist, Scene escenaBase) {
+        this.artista = artist;
+        this.nombre.setText(artist.name());
         this.biografia.setText(artist.biografia());
         this.tags.setText(artist.tags());
         this.oyentes.setText(artist.oyentes());

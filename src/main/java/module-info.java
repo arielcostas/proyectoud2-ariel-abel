@@ -23,4 +23,6 @@ module com.github.cgainstitution.proyectoud1arielabel.app {
 	exports com.github.cgainstitution.proyectoud1arielabel.app.ui;
 	opens com.github.cgainstitution.proyectoud1arielabel.app.ui to com.fasterxml.jackson.databind, javafx.fxml;
 	opens com.github.cgainstitution.proyectoud1arielabel.app.controller to com.fasterxml.jackson.databind, javafx.fxml;
+    exports com.github.cgainstitution.proyectoud1arielabel.app.models;
+    opens com.github.cgainstitution.proyectoud1arielabel.app.models to com.fasterxml.jackson.databind, javafx.fxml;
 }
