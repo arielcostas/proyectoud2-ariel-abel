@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.SequenceWriter;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.github.cgainstitution.proyectoud1arielabel.app.datasource.LastfmDataSource;
+import com.github.cgainstitution.proyectoud1arielabel.app.datasource.JDBCDataSource;
 import com.github.cgainstitution.proyectoud1arielabel.app.dto.ArtistaDetallesDto;
 import com.github.cgainstitution.proyectoud1arielabel.app.dto.ArtistaDto;
 import com.github.cgainstitution.proyectoud1arielabel.app.dto.ListaArtistas;
@@ -21,15 +21,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class MainService {
-	private final LastfmDataSource lastfmDataSource;
+	private final JDBCDataSource JDBCDataSource;
 
 	public MainService() {
-		lastfmDataSource = new LastfmDataSource();
+		JDBCDataSource = new JDBCDataSource();
 	}
 
 	public List<ArtistaDto> buscarArtistas(String terminoBusqueda) {
 		try {
-			var artistas = lastfmDataSource.buscarArtistas(terminoBusqueda);
+			var artistas = JDBCDataSource.buscarArtistas(terminoBusqueda);
 			return artistas
 					.stream()
 					.filter(a -> !a.getMbid().equals(""))
@@ -50,7 +50,7 @@ public class MainService {
 	 */
 	public ArtistaDetallesDto datosArtista(String mbidArtista) {
 		try {
-			var artista = lastfmDataSource.datosArtista(mbidArtista);
+			var artista = JDBCDataSource.datosArtista(mbidArtista);
 
 			// Obtener la imagen en tamaño mediano del artista.
 			var imgUrl = artista.getImage().get(2).getText();

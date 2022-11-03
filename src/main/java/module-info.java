@@ -9,6 +9,9 @@ module com.github.cgainstitution.proyectoud1arielabel.app {
 	requires com.fasterxml.jackson.dataformat.xml;
 	requires com.fasterxml.jackson.dataformat.csv;
 
+	requires java.sql;
+	requires mysql.connector.java;
+
 	exports com.github.cgainstitution.proyectoud1arielabel.app;
 	opens com.github.cgainstitution.proyectoud1arielabel.app to javafx.fxml;
 	exports com.github.cgainstitution.proyectoud1arielabel.app.controller;
