@@ -6,7 +6,7 @@
 
 	<groupId>com.github.cgainstitution</groupId>
 	<artifactId>proyectoud2arielabel</artifactId>
-	<version>1.0</version>
+	<version>2.0</version>
 	<name>proyectoud2arielabel</name>
 
 	<properties>
@@ -68,7 +68,6 @@
 				<version>0.0.8</version>
 				<executions>
 					<execution>
-						<!-- Default configuration for running with: mvn clean javafx:run -->
 						<id>default-cli</id>
 						<configuration>
 							<mainClass>com.github.cgainstitution.proyectoud1arielabel.app.UltimoFMApplication</mainClass>
