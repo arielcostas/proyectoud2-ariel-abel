@@ -1,8 +1,11 @@
 package com.github.cgainstitution.proyectoud1arielabel.app.models;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@JacksonXmlRootElement(localName = "artista")
 public record Artista(
 	Integer id,
 	String name,

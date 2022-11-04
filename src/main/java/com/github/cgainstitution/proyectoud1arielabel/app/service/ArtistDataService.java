@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class ArtistDataService {
@@ -38,8 +39,17 @@ public class ArtistDataService {
 		CsvSchema schema = mapper.schemaFor(Artista.class);
 
 		try (SequenceWriter sw = mapper.writer(schema).writeValues(destino)) {
-			sw.write(List.of("nombre", "biografia", "tags", "oyentes", "reproducciones", "imagenArtista"));
-			sw.write(artista);
+			sw.write(List.of("id", "name", "leadStreams", "feats", "tracks", "oneBillion", "hundredMillion", "lastUpdated"));
+			sw.write(List.of(
+				artista.id(),
+				artista.name(),
+				artista.leadStreams(),
+				artista.feats(),
+				artista.tracks(),
+				artista.oneBillion(),
+				artista.hundredMillion(),
+				new SimpleDateFormat("yyyy-MM-dd").format(artista.lastUpdated())
+			));
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
