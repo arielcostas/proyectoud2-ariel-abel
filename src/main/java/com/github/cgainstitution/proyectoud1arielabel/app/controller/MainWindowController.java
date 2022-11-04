@@ -29,8 +29,7 @@ public class MainWindowController {
 	 * Los elementos de la tabla con el listado de artistas. Por defecto, tiene un elemento nulo
 	 * en lugar de estar vacío para evitar
 	 */
-	private final ObservableList<ArtistTableItem> artistSearchResults =
-			FXCollections.observableArrayList((ArtistTableItem) null);
+	private final ObservableList<ArtistTableItem> artistSearchResults = FXCollections.observableArrayList((ArtistTableItem) null);
 
 	private final MainService mainService = new MainService();
 
@@ -57,13 +56,9 @@ public class MainWindowController {
 				artistSearchResults.clear();
 				var scene = busquedaArtista.getScene();
 				scene.setCursor(Cursor.WAIT);
-				mainService
-						.buscarArtistas(busquedaArtista.getText())
-						.forEach(artista -> {
-							artistSearchResults.add(
-									new ArtistTableItem(artista.id(), artista.name(), artista.leadStreams())
-							);
-						});
+				mainService.buscarArtistas(busquedaArtista.getText()).forEach(artista -> {
+					artistSearchResults.add(new ArtistTableItem(artista.id(), artista.name(), artista.leadStreams()));
+				});
 				scene.setCursor(Cursor.DEFAULT);
 				return null;
 			}
@@ -96,9 +91,7 @@ public class MainWindowController {
 	 * @param mbid  El mbid del artista que se desea consultar
 	 */
 	public void mostrarPaginaDeArtista(Stage stage, String mbid) {
-		FXMLLoader loader = new FXMLLoader(
-				UltimoFMApplication.class.getResource("artistdata-window.fxml")
-		);
+		FXMLLoader loader = new FXMLLoader(UltimoFMApplication.class.getResource("artistdata-window.fxml"));
 
 		Scene scene;
 		try {
@@ -135,9 +128,7 @@ public class MainWindowController {
 
 		if (archivoDondeGuardar != null) {
 			try {
-				mainService.guardarArtistasComoJson(
-						new ArrayList<>(artistSearchResults), archivoDondeGuardar
-				);
+				mainService.guardarArtistasComoJson(new ArrayList<>(artistSearchResults), archivoDondeGuardar);
 			} catch (RuntimeException e) {
 				var alerta = new Alert(Alert.AlertType.ERROR);
 				alerta.setHeaderText("Error guardando como JSON");
@@ -155,9 +146,7 @@ public class MainWindowController {
 
 		if (archivoDondeGuardar != null) {
 			try {
-				mainService.guardarArtistasComoXML(
-						new ArrayList<>(artistSearchResults), archivoDondeGuardar
-				);
+				mainService.guardarArtistasComoXML(new ArrayList<>(artistSearchResults), archivoDondeGuardar);
 			} catch (RuntimeException e) {
 				var alerta = new Alert(Alert.AlertType.ERROR);
 				alerta.setHeaderText("Error guardando como XML");
@@ -175,9 +164,7 @@ public class MainWindowController {
 
 		if (archivoDondeGuardar != null) {
 			try {
-				mainService.guardarArtistasComoCSV(
-						new ArrayList<>(artistSearchResults), archivoDondeGuardar
-				);
+				mainService.guardarArtistasComoCSV(new ArrayList<>(artistSearchResults), archivoDondeGuardar);
 			} catch (RuntimeException e) {
 				var alerta = new Alert(Alert.AlertType.ERROR);
 				alerta.setHeaderText("Error guardando como Texto");
@@ -195,9 +182,7 @@ public class MainWindowController {
 
 		if (archivoDondeGuardar != null) {
 			try {
-				mainService.guardarArtistasComoBinario(
-						new ArrayList<>(artistSearchResults), archivoDondeGuardar
-				);
+				mainService.guardarArtistasComoBinario(new ArrayList<>(artistSearchResults), archivoDondeGuardar);
 			} catch (RuntimeException e) {
 				var alerta = new Alert(Alert.AlertType.ERROR);
 				alerta.setHeaderText("Error guardando como Binario");

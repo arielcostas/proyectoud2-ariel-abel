@@ -35,7 +35,7 @@ public class DialogoLogin extends Dialog<Pair<String, String>> {
 			setDialogPane(dialogPane);
 
 			setResultConverter(buttonType -> {
-				if(!Objects.equals(buttonType.getButtonData(), ButtonBar.ButtonData.OK_DONE)) {
+				if (!Objects.equals(buttonType.getButtonData(), ButtonBar.ButtonData.OK_DONE)) {
 					System.exit(0);
 				}
 

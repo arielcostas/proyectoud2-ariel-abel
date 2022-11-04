@@ -65,8 +65,7 @@ public class UltimoFMApplication extends Application {
 			var usuario = result.getKey();
 			var contrasena = result.getValue();
 
-			correct = Objects.equals(AppProperties.getProp(AppProperties.USUARIO), usuario)
-					&& BcryptFunction.getInstance(Bcrypt.A, 12).check(contrasena, AppProperties.getProp(AppProperties.CONTRASENA));
+			correct = Objects.equals(AppProperties.getProp(AppProperties.USUARIO), usuario) && BcryptFunction.getInstance(Bcrypt.A, 12).check(contrasena, AppProperties.getProp(AppProperties.CONTRASENA));
 		}
 		return correct;
 	}

@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.Date;
 
 public record Artista(
-        Integer id,
-        String name,
-        Long leadStreams,
-        Long feats,
-        Integer tracks,
-        Integer oneBillion,
-        Integer hundredMillion,
-        Date lastUpdated
+	Integer id,
+	String name,
+	Long leadStreams,
+	Long feats,
+	Integer tracks,
+	Integer oneBillion,
+	Integer hundredMillion,
+	Date lastUpdated
 ) implements Serializable {
-    public static final long serialVersionUID = 1L;
+	public static final long serialVersionUID = 1L;
 }

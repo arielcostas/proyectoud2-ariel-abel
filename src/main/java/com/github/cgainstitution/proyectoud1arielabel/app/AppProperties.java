@@ -25,9 +25,7 @@ public class AppProperties {
 				Files.write(propertiesFile, datos);
 			}
 
-			properties.load(
-					Files.newInputStream(propertiesFile)
-			);
+			properties.load(Files.newInputStream(propertiesFile));
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -37,7 +35,7 @@ public class AppProperties {
 		return getInstance().properties.getProperty(propkey);
 	}
 
- 	public static AppProperties getInstance() {
+	public static AppProperties getInstance() {
 		if (instance == null) {
 			instance = new AppProperties();
 		}

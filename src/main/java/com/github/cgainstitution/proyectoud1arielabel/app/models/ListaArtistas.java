@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 @JacksonXmlRootElement(localName = "artistas")
 public class ListaArtistas {
-    @JacksonXmlElementWrapper(useWrapping = false)
-    public ArrayList<ArtistTableItem> artista;
+	@JacksonXmlElementWrapper(useWrapping = false)
+	public ArrayList<ArtistTableItem> artista;
 
-    public ListaArtistas(ArrayList<ArtistTableItem> artistas) {
-        this.artista = artistas;
-    }
+	public ListaArtistas(ArrayList<ArtistTableItem> artistas) {
+		this.artista = artistas;
+	}
 }
