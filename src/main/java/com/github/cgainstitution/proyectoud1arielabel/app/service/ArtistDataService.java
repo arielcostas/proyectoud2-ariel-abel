@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.SequenceWriter;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.github.cgainstitution.proyectoud1arielabel.app.dto.ArtistaDetallesDto;
+import com.github.cgainstitution.proyectoud1arielabel.app.models.Artista;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -14,7 +14,7 @@ import java.io.ObjectOutputStream;
 import java.util.List;
 
 public class ArtistDataService {
-	public void guardarArtistaComoJson(ArtistaDetallesDto artista, File destino) {
+	public void guardarArtistaComoJson(Artista artista, File destino) {
 		var mapper = new ObjectMapper();
 		try {
 			mapper.writeValue(destino, artista);
@@ -23,7 +23,7 @@ public class ArtistDataService {
 		}
 	}
 
-	public void guardarArtistaComoXML(ArtistaDetallesDto artista, File destino) {
+	public void guardarArtistaComoXML(Artista artista, File destino) {
 		var mapper = new XmlMapper();
 
 		try {
@@ -33,9 +33,9 @@ public class ArtistDataService {
 		}
 	}
 
-	public void guardarArtistaComoCSV(ArtistaDetallesDto artista, File destino) {
+	public void guardarArtistaComoCSV(Artista artista, File destino) {
 		var mapper = new CsvMapper();
-		CsvSchema schema = mapper.schemaFor(ArtistaDetallesDto.class);
+		CsvSchema schema = mapper.schemaFor(Artista.class);
 
 		try (SequenceWriter sw = mapper.writer(schema).writeValues(destino)) {
 			sw.write(List.of("nombre", "biografia", "tags", "oyentes", "reproducciones", "imagenArtista"));
@@ -45,7 +45,7 @@ public class ArtistDataService {
 		}
 	}
 
-	public void guardarArtistaComoBinario(ArtistaDetallesDto artista, File destino) {
+	public void guardarArtistaComoBinario(Artista artista, File destino) {
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(destino))) {
 			oos.writeObject(artista);
 		} catch (IOException e) {

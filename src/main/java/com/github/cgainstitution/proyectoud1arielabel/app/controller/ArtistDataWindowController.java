@@ -1,6 +1,5 @@
 package com.github.cgainstitution.proyectoud1arielabel.app.controller;
 
-import com.github.cgainstitution.proyectoud1arielabel.app.dto.ArtistaDetallesDto;
 import com.github.cgainstitution.proyectoud1arielabel.app.models.Artista;
 import com.github.cgainstitution.proyectoud1arielabel.app.service.ArtistDataService;
 import javafx.application.Platform;
@@ -16,21 +15,23 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 
 public class ArtistDataWindowController {
 	@FXML
 	public Label nombre;
 	@FXML
-	public Label biografia;
+	public Label leadStreams;
 	@FXML
-	public Label tags;
+	public Label feats;
 	@FXML
-	public Label oyentes;
+	public Label tracks;
 	@FXML
-	public Label reproducciones;
-
+	public Label oneBillion;
 	@FXML
-	public ImageView imagenArtista;
+	public Label hundredMillion;
+	@FXML
+	public Label lastUpdated;
 
 	/**
 	 * La escena de la ventana principal, usada en el botón volver
@@ -43,13 +44,15 @@ public class ArtistDataWindowController {
 	public void initData(Artista artist, Scene escenaBase) {
 		this.artista = artist;
 		this.nombre.setText(artist.name());
-		this.biografia.setText(artist.biografia());
-		this.tags.setText(artist.tags());
-		this.oyentes.setText(artist.oyentes());
-		this.reproducciones.setText(artist.reproducciones());
-		this.imagenArtista.setImage(new Image(artist.imagenArtista()));
-		this.escenaBase = escenaBase;
 
+		this.nombre.setText(artist.name());
+		this.leadStreams.setText(String.valueOf(artist.leadStreams()));
+		this.feats.setText(String.valueOf(artist.feats()));
+		this.tracks.setText(String.valueOf(artist.tracks()));
+		this.oneBillion.setText(String.valueOf(artist.oneBillion()));
+		this.hundredMillion.setText(String.valueOf(artist.hundredMillion()));
+		this.lastUpdated.setText(new SimpleDateFormat("dd/MM/yyyy").format(artist.lastUpdated()));
+		this.escenaBase = escenaBase;
 	}
 
 	public void salir(ActionEvent event) {
@@ -73,7 +76,7 @@ public class ArtistDataWindowController {
 				archivoDondeGuardar = new File(archivoDondeGuardar + ".json");
 			}
 			try {
-				artistDataService.guardarArtistaComoJson(artist, archivoDondeGuardar);
+				artistDataService.guardarArtistaComoJson(artista, archivoDondeGuardar);
 			} catch (RuntimeException e) {
 				var alerta = new Alert(Alert.AlertType.ERROR);
 				alerta.setHeaderText("Error guardando como JSON");
@@ -91,7 +94,7 @@ public class ArtistDataWindowController {
 
 		if (archivoDondeGuardar != null) {
 			try {
-				artistDataService.guardarArtistaComoXML(artist, archivoDondeGuardar);
+				artistDataService.guardarArtistaComoXML(artista, archivoDondeGuardar);
 			} catch (RuntimeException e) {
 				var alerta = new Alert(Alert.AlertType.ERROR);
 				alerta.setHeaderText("Error guardando como XML");
@@ -109,7 +112,7 @@ public class ArtistDataWindowController {
 
 		if (archivoDondeGuardar != null) {
 			try {
-				artistDataService.guardarArtistaComoCSV(artist, archivoDondeGuardar);
+				artistDataService.guardarArtistaComoCSV(artista, archivoDondeGuardar);
 			} catch (RuntimeException e) {
 				var alerta = new Alert(Alert.AlertType.ERROR);
 				alerta.setHeaderText("Error guardando como Texto");
@@ -127,7 +130,7 @@ public class ArtistDataWindowController {
 
 		if (archivoDondeGuardar != null) {
 			try {
-				artistDataService.guardarArtistaComoBinario(artist, archivoDondeGuardar);
+				artistDataService.guardarArtistaComoBinario(artista, archivoDondeGuardar);
 			} catch (RuntimeException e) {
 				var alerta = new Alert(Alert.AlertType.ERROR);
 				alerta.setHeaderText("Error guardando como Binario");

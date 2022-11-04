@@ -78,7 +78,7 @@ public class MainWindowController {
 			var row = new TableRow<ArtistTableItem>();
 			row.setOnMouseClicked(event -> {
 				var window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-				mostrarPaginaDeArtista(window, row.getItem().getMbid());
+				mostrarPaginaDeArtista(window, String.valueOf(row.getItem().getMbid()));
 			});
 			return row;
 		});

@@ -14,7 +14,7 @@ public class JDBCDataSource {
 		var conn = BBDD.getConnection();
 		List<ResumenArtista> resultados = new ArrayList<>();
 		try {
-			var stmt = conn.prepareStatement("SELECT id, name, leadStreams FROM artist WHERE name LIKE ?");
+			var stmt = conn.prepareStatement("SELECT id, name, leadStreams FROM artistas WHERE name LIKE ?");
 			stmt.setString(1, "%" + terminoBusqueda + "%");
 			var r = stmt.executeQuery();
 			while (r.next()) {
@@ -36,7 +36,7 @@ public class JDBCDataSource {
 	public Artista datosArtista(String idArtista) throws IOException {
 		var conn = BBDD.getConnection();
 		try {
-			var stmt = conn.prepareStatement("SELECT * FROM artist WHERE id = ?");
+			var stmt = conn.prepareStatement("SELECT * FROM artistas WHERE id = ?");
 			stmt.setInt(1, Integer.parseInt(idArtista));
 			var r = stmt.executeQuery();
 			while (r.next()) {

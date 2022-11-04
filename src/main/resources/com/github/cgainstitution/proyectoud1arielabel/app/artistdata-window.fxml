@@ -6,7 +6,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" spacing="20"
+<VBox alignment="TOP_CENTER" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0"
+	  spacing="20"
 	  xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
 	  fx:controller="com.github.cgainstitution.proyectoud1arielabel.app.controller.ArtistDataWindowController">
 	<ToolBar>
@@ -58,82 +59,106 @@
 		<padding>
 			<Insets bottom="20" left="20" right="20" top="20"/>
 		</padding>
-		<Label fx:id="nombre" alignment="CENTER" text="Lorem Ipsum" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+		<Label fx:id="nombre" alignment="CENTER" text="Lorem Ipsum" textAlignment="CENTER"
+			   VBox.vgrow="ALWAYS">
 			<font>
 				<Font name="System Bold" size="50.0"/>
 			</font>
 			<padding>
-				<Insets left="100"/>
+				<Insets left="200"/>
 			</padding>
 		</Label>
-		<HBox spacing="32">
-			<VBox spacing="20">
-				<HBox>
-					<Label alignment="CENTER_RIGHT" minWidth="110" text="Biografia">
-						<font>
-							<Font name="System Bold" size="14.0"/>
-						</font>
-					</Label>
-					<Label fx:id="biografia"
-						   text="Donec dignissim semper orci, eu varius justo consectetur non. Duis convallis fermentum sapien nec convallis. Aenean sed dignissim turpis, ultrices luctus velit. Nam ligula urna, consequat tempor ornare eget, euismod at turpis. Praesent vitae nibh et risus pretium mollis quis vitae nulla. Phasellus nec lectus ac quam tincidunt porta."
-						   wrapText="true">
-						<padding>
-							<Insets left="10"/>
-						</padding>
-						<font>
-							<Font name="System" size="14.0"/>
-						</font>
-					</Label>
-				</HBox>
-				<HBox>
-					<Label alignment="CENTER_RIGHT" minWidth="110" text="Tags">
-						<font>
-							<Font name="System Bold" size="14.0"/>
-						</font>
-					</Label>
-					<Label fx:id="tags" text="Sed ornare est ante vitae maximus">
-						<padding>
-							<Insets left="10"/>
-						</padding>
-						<font>
-							<Font name="System" size="14.0"/>
-						</font>
-					</Label>
-				</HBox>
-				<HBox>
-					<Label alignment="CENTER_RIGHT" minWidth="110" text="Oyentes">
-						<font>
-							<Font name="System Bold" size="14.0"/>
-						</font>
-					</Label>
-					<Label fx:id="oyentes" text="Sed ornare est ante vitae maximus">
-						<padding>
-							<Insets left="10"/>
-						</padding>
-						<font>
-							<Font name="System" size="14.0"/>
-						</font>
-					</Label>
-				</HBox>
-				<HBox>
-					<Label alignment="CENTER_RIGHT" minWidth="110" text="Reproducciones">
-						<font>
-							<Font name="System Bold" size="14.0"/>
-						</font>
-					</Label>
-					<Label fx:id="reproducciones" text="Sed ornare est ante vitae maximus">
-						<padding>
-							<Insets left="10"/>
-						</padding>
-						<font>
-							<Font name="System" size="14.0"/>
-						</font>
-					</Label>
-				</HBox>
-			</VBox>
-			<ImageView fx:id="imagenArtista" style="-fx-border-radius: 10 10 10 10">
-				<Image url="@logo.png" requestedWidth="160" requestedHeight="160"/>
-			</ImageView>
+		<HBox>
+			<Label alignment="CENTER_RIGHT" minWidth="110" text="Oyentes">
+				<font>
+					<Font name="System Bold" size="14.0"/>
+				</font>
+			</Label>
+			<Label fx:id="leadStreams"
+				   text="0"
+				   wrapText="true">
+				<padding>
+					<Insets left="10"/>
+				</padding>
+				<font>
+					<Font name="System" size="14.0"/>
+				</font>
+			</Label>
+		</HBox>
+		<HBox>
+			<Label alignment="CENTER_RIGHT" minWidth="110" text="Colaboraciones">
+				<font>
+					<Font name="System Bold" size="14.0"/>
+				</font>
+			</Label>
+			<Label fx:id="feats" text="0">
+				<padding>
+					<Insets left="10"/>
+				</padding>
+				<font>
+					<Font name="System" size="14.0"/>
+				</font>
+			</Label>
+		</HBox>
+		<HBox>
+			<Label alignment="CENTER_RIGHT" minWidth="110" text="Canciones totales">
+				<font>
+					<Font name="System Bold" size="14.0"/>
+				</font>
+			</Label>
+			<Label fx:id="tracks" text="0">
+				<padding>
+					<Insets left="10"/>
+				</padding>
+				<font>
+					<Font name="System" size="14.0"/>
+				</font>
+			</Label>
+		</HBox>
+		<HBox>
+			<Label alignment="CENTER_RIGHT" minWidth="110" text="Canciones con 1000M reps.">
+				<font>
+					<Font name="System Bold" size="14.0"/>
+				</font>
+			</Label>
+			<Label fx:id="oneBillion" text="0">
+				<padding>
+					<Insets left="10"/>
+				</padding>
+				<font>
+					<Font name="System" size="14.0"/>
+				</font>
+			</Label>
+		</HBox>
+		<HBox>
+			<Label alignment="CENTER_RIGHT" minWidth="110" text="Canciones con 100M reps.">
+				<font>
+					<Font name="System Bold" size="14.0"/>
+				</font>
+			</Label>
+			<Label fx:id="hundredMillion" text="0">
+				<padding>
+					<Insets left="10"/>
+				</padding>
+				<font>
+					<Font name="System" size="14.0"/>
+				</font>
+			</Label>
+		</HBox>
+		<HBox>
+			<Label alignment="CENTER_RIGHT" minWidth="110" text="Última actualización">
+				<font>
+					<Font name="System Bold" size="14.0"/>
+				</font>
+			</Label>
+			<Label fx:id="lastUpdated" text="0">
+				<padding>
+					<Insets left="10"/>
+				</padding>
+				<font>
+					<Font name="System" size="14.0"/>
+				</font>
+			</Label>
 		</HBox>
 	</VBox>
 
