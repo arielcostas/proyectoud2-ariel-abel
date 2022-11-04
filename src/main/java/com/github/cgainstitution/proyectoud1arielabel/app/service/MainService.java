@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MainService {
 	private final JDBCDataSource JDBCDataSource;
@@ -83,9 +84,9 @@ public class MainService {
 
 	public void guardarArtistasComoBinario(ArrayList<ArtistTableItem> artistas, File destino) {
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(destino))) {
-			/*oos.writeObject(
-					artistas.stream().map(a -> new ResumenArtistaDto(a.getMbid(), a.getNombre(), a.getOyentes())).collect(Collectors.toList())
-			);*/
+			oos.writeObject(
+				artistas.stream().map(a -> new ResumenArtista(a.getMbid(), a.getNombre(), a.getOyentes())).collect(Collectors.toList())
+			);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
