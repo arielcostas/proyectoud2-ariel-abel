@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import com.password4j.BcryptFunction;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class UltimoFMApplication extends Application {
@@ -65,7 +67,25 @@ public class UltimoFMApplication extends Application {
 			var usuario = result.getKey();
 			var contrasena = result.getValue();
 
-			correct = Objects.equals(AppProperties.getProp(AppProperties.USUARIO), usuario) && BcryptFunction.getInstance(Bcrypt.A, 12).check(contrasena, AppProperties.getProp(AppProperties.CONTRASENA));
+			try {
+				var stmt = BBDD.getConnection().prepareStatement("SELECT * FROM usuarios WHERE username = ?");
+				stmt.setString(1,usuario);
+
+				var resultado = stmt.executeQuery();
+				if (!resultado.next()) {
+					return false;
+				}
+
+				var usernameDb = resultado.getString(1);
+				var passwordDb = resultado.getString(2);
+
+				correct = Objects.equals(usernameDb, usuario) &&
+					BcryptFunction.getInstance(Bcrypt.A, 12).check(contrasena, passwordDb);
+
+			} catch(SQLException e) {
+				System.out.println("Excepción iniciando sesión: " + e.getMessage());
+				return false;
+			}
 		}
 		return correct;
 	}
