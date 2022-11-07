@@ -2,7 +2,6 @@ package com.github.cgainstitution.proyectoud1arielabel.app.controller;
 
 import com.github.cgainstitution.proyectoud1arielabel.app.UltimoFMApplication;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;

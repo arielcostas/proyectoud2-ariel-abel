@@ -37,6 +37,13 @@
 				</ImageView>
 			</graphic>
 		</Button>
+		<Button onAction="#onInsertar" contentDisplay="GRAPHIC_ONLY">
+			<graphic>
+				<ImageView>
+					<Image url="@crear-artista.png" requestedWidth="32" requestedHeight="32"/>
+				</ImageView>
+			</graphic>
+		</Button>
 		<Button onAction="#onSalir" contentDisplay="GRAPHIC_ONLY">
 			<graphic>
 				<ImageView>

@@ -17,12 +17,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainWindowController {
 	/**
@@ -190,5 +192,27 @@ public class MainWindowController {
 				alerta.showAndWait();
 			}
 		}
+	}
+
+	public void onInsertar(ActionEvent event) {
+		DialogoCrear dialogo = null;
+		try {
+			dialogo = new DialogoCrear();
+			dialogo.setTitle("Insertar artista - ÚltimoFM");
+			var stage = (Stage) dialogo.getDialogPane().getScene().getWindow();
+			stage.getIcons().add(new Image(Objects.requireNonNull(UltimoFMApplication.class.getResourceAsStream("logo.png"))));
+		} catch (Exception e) {
+			System.exit(1);
+		}
+		var resultadoDialogo = dialogo.showAndWait();
+
+		// Si no se ha cancelado
+		resultadoDialogo.ifPresent(artista -> {
+			try {
+				mainService.insertarArtista(artista);
+			} catch (RuntimeException e) {
+				System.out.println("Error guardando artista: " + e.getMessage());
+			}
+		});
 	}
 }

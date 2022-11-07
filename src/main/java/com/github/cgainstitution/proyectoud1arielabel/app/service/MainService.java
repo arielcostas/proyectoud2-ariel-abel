@@ -20,15 +20,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class MainService {
-	private final JDBCDataSource JDBCDataSource;
+	private final JDBCDataSource dataSource;
 
 	public MainService() {
-		JDBCDataSource = new JDBCDataSource();
+		dataSource = new JDBCDataSource();
 	}
 
 	public List<ResumenArtista> buscarArtistas(String terminoBusqueda) {
 		try {
-			return JDBCDataSource.buscarArtistas(terminoBusqueda);
+			return dataSource.buscarArtistas(terminoBusqueda);
 		} catch (IOException e) {
 			System.err.println("Hubo un error buscando artistas: " + e.getMessage());
 			return new ArrayList<>();
@@ -44,7 +44,7 @@ public class MainService {
 	 */
 	public Artista datosArtista(String mbidArtista) {
 		try {
-			return JDBCDataSource.datosArtista(mbidArtista);
+			return dataSource.datosArtista(mbidArtista);
 		} catch (IOException e) {
 			System.err.println("Hubo un error buscando artistas: " + e.getMessage());
 			return null;
@@ -91,4 +91,14 @@ public class MainService {
 			throw new RuntimeException(e);
 		}
 	}
+
+	public void insertarArtista(Artista artista) {
+		try {
+			this.dataSource.insertarArtista(artista);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+
 }

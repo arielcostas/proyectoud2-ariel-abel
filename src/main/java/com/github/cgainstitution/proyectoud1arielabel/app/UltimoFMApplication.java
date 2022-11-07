@@ -67,9 +67,10 @@ public class UltimoFMApplication extends Application {
 			var usuario = result.getKey();
 			var contrasena = result.getValue();
 
-			try {
-				var stmt = BBDD.getConnection().prepareStatement("SELECT * FROM usuarios WHERE username = ?");
-				stmt.setString(1,usuario);
+			try (
+				var stmt = BBDD.getConnection().prepareStatement("SELECT * FROM usuarios WHERE username = ?")
+			) {
+				stmt.setString(1, usuario);
 
 				var resultado = stmt.executeQuery();
 				if (!resultado.next()) {
@@ -81,8 +82,7 @@ public class UltimoFMApplication extends Application {
 
 				correct = Objects.equals(usernameDb, usuario) &&
 					BcryptFunction.getInstance(Bcrypt.A, 12).check(contrasena, passwordDb);
-
-			} catch(SQLException e) {
+			} catch (SQLException e) {
 				System.out.println("Excepción iniciando sesión: " + e.getMessage());
 				return false;
 			}

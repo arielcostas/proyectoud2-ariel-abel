@@ -5,6 +5,9 @@ import com.github.cgainstitution.proyectoud1arielabel.app.models.Artista;
 import com.github.cgainstitution.proyectoud1arielabel.app.models.ResumenArtista;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,5 +50,20 @@ public class JDBCDataSource {
 			System.out.println(e);
 		}
 		return null;
+	}
+
+	public void insertarArtista(Artista artista) throws SQLException {
+		var conn = BBDD.getConnection();
+
+		var stmt = conn.prepareStatement("INSERT INTO artistas (name, leadStreams, feats, tracks, oneBillion, hundredMillion, lastUpdated) VALUES (?, ?, ?, ?, ?, ?, ?)");
+		stmt.setString(1, artista.name());
+		stmt.setLong(2, artista.leadStreams());
+		stmt.setLong(3, artista.feats());
+		stmt.setInt(4, artista.tracks());
+		stmt.setInt(5, artista.oneBillion());
+		stmt.setInt(6, artista.hundredMillion());
+		stmt.setString(7, new SimpleDateFormat("yyyy-MM-dd").format(artista.lastUpdated()));
+
+		stmt.execute();
 	}
 }

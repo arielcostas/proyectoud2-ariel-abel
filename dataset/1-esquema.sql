@@ -10,6 +10,6 @@ CREATE TABLE artistas(
     tracks INT NOT NULL,
     oneBillion INT NOT NULL,
     hundredMillion INT NOT NULL,
-    lastUpdated date DEFAULT NOW() ON UPDATE NOW(),
+    lastUpdated date DEFAULT NULL,
     PRIMARY KEY (id)
 );
