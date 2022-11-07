@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.SequenceWriter;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.github.cgainstitution.proyectoud1arielabel.app.datasource.JDBCDataSource;
 import com.github.cgainstitution.proyectoud1arielabel.app.models.Artista;
 
 import java.io.File;
@@ -15,6 +16,20 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class ArtistDataService {
+	private final JDBCDataSource dataSource;
+
+	public ArtistDataService() {
+		dataSource = new JDBCDataSource();
+	}
+
+	public void eliminarArtista(int id) {
+		try {
+			this.dataSource.eliminarPorId(id);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 	public void guardarArtistaComoJson(Artista artista, File destino) {
 		var mapper = new ObjectMapper();
 		try {

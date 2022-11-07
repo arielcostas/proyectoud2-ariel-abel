@@ -1,5 +1,6 @@
 package com.github.cgainstitution.proyectoud1arielabel.app.controller;
 
+import com.github.cgainstitution.proyectoud1arielabel.app.UltimoFMApplication;
 import com.github.cgainstitution.proyectoud1arielabel.app.models.Artista;
 import com.github.cgainstitution.proyectoud1arielabel.app.service.ArtistDataService;
 import javafx.application.Platform;
@@ -8,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Objects;
 
 public class ArtistDataWindowController {
 	@FXML
@@ -63,6 +66,15 @@ public class ArtistDataWindowController {
 		var stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(escenaBase);
 		stage.show();
+	}
+
+	public void onEliminar(ActionEvent event) {
+		try {
+			artistDataService.eliminarArtista(artista.id());
+			volver(event);
+		} catch (RuntimeException e) {
+			System.out.println("Error guardando artista: " + e.getMessage());
+		}
 	}
 
 	public void guardarJson(ActionEvent event) {

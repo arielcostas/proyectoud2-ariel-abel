@@ -46,6 +46,13 @@
 				</ImageView>
 			</graphic>
 		</Button>
+		<Button contentDisplay="GRAPHIC_ONLY" onAction="#onEliminar">
+			<graphic>
+				<ImageView>
+					<Image requestedHeight="32" requestedWidth="32" url="@borrar.png"/>
+				</ImageView>
+			</graphic>
+		</Button>
 		<Button contentDisplay="GRAPHIC_ONLY" onAction="#salir">
 			<graphic>
 				<ImageView>

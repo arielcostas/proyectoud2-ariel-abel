@@ -66,4 +66,12 @@ public class JDBCDataSource {
 
 		stmt.execute();
 	}
+
+	public void eliminarPorId(int id) throws SQLException {
+		var conn = BBDD.getConnection();
+		var stmt = conn.prepareStatement("DELETE FROM artistas WHERE id=?");
+		stmt.setInt(1, id);
+
+		stmt.execute();
+	}
 }
