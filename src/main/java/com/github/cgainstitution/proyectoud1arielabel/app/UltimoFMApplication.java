@@ -68,7 +68,7 @@ public class UltimoFMApplication extends Application {
 			var contrasena = result.getValue();
 
 			try (
-				var stmt = BBDD.getConnection().prepareStatement("SELECT * FROM usuarios WHERE username = ?")
+				var stmt = AuthBBDD.getConnection().prepareStatement("SELECT * FROM usuarios WHERE username = ?")
 			) {
 				stmt.setString(1, usuario);
 

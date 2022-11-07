@@ -1,4 +1,6 @@
-USE proyectoud2_ariel_abel;
+DROP SCHEMA IF EXISTS proyectoud2_ariel_abel_login;
+CREATE SCHEMA proyectoud2_ariel_abel_login;
+USE proyectoud2_ariel_abel_login;
 CREATE TABLE usuarios(
     username varchar(30) not null,
     password varchar(255) not null,
