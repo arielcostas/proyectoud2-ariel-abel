@@ -8,33 +8,34 @@
 			xmlns:fx="http://javafx.com/fxml"
 			prefHeight="500.0" prefWidth="400.0" headerText="Insertar artista">
 
+
 	<content>
 		<VBox spacing="20" VBox.vgrow="ALWAYS">
 			<padding>
-				<Insets left="120" top="100" />
+				<Insets left="50" top="80" />
 			</padding>
 			<HBox>
-				<Label text="Nombre" textAlignment="RIGHT" minWidth="100"/>
+				<Label text="Nombre" textAlignment="RIGHT" minWidth="160"/>
 				<TextField fx:id="name" />
 			</HBox>
 			<HBox>
-				<Label text="Oyentes" textAlignment="RIGHT" minWidth="100"/>
+				<Label text="Oyentes" textAlignment="RIGHT" minWidth="160"/>
 				<TextField fx:id="leadStreams" />
 			</HBox>
 			<HBox>
-				<Label text="Colaboraciones" textAlignment="RIGHT" minWidth="100"/>
+				<Label text="Colaboraciones" textAlignment="RIGHT" minWidth="160"/>
 				<TextField fx:id="feats" />
 			</HBox>
 			<HBox>
-				<Label text="Canciones totales" textAlignment="RIGHT" minWidth="100"/>
+				<Label text="Canciones totales" textAlignment="RIGHT" minWidth="160"/>
 				<TextField fx:id="tracks" />
 			</HBox>
 			<HBox>
-				<Label text="Canciones con 1000M reps." textAlignment="RIGHT" minWidth="100"/>
+				<Label text="Canciones con 1000M reps." textAlignment="RIGHT" minWidth="160"/>
 				<TextField fx:id="oneBillion" />
 			</HBox>
 			<HBox>
-				<Label text="Canciones con 100M reps." textAlignment="RIGHT" minWidth="100"/>
+				<Label text="Canciones con 100M reps." textAlignment="RIGHT" minWidth="160"/>
 				<TextField fx:id="hundredMillion" />
 			</HBox>
 
