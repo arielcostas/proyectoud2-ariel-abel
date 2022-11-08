@@ -12,8 +12,8 @@ public class AuthBBDD {
         if (conexion == null) {
             // Leer valores de configuración desde entorno
 			String url = System.getenv("LOGINDB_URL");
-			String user = System.getenv("DB_USER");
-			String password = System.getenv("DB_PASSWORD");
+			String user = System.getenv("LOGINDB_USER");
+			String password = System.getenv("LOGINDB_PASSWORD");
 
 			// Fijar valores por defecto si no están definidos
 			if (url == null) {
