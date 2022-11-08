@@ -17,13 +17,13 @@ public class AuthBBDD {
 
 			// Fijar valores por defecto si no están definidos
 			if (url == null) {
-				url = "jdbc:mysql://localhost:3306/proyectoud2_ariel_abel_login";
+				url = "jdbc:mysql://dam-aad-ud2.mysql.database.azure.com:3306/proyectoud2_ariel_abel_login";
 			}
 			if (user == null) {
-				user = "jdbc";
+				user = "usuario_login";
 			}
 			if (password == null) {
-				password = "jdbc";
+				password = "7WQzdXsv";
 			}
 
 			// Crear conexión

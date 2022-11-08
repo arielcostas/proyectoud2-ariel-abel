@@ -15,13 +15,13 @@ public class BBDD {
 
 			// Fijar valores por defecto si no están definidos
 			if (url == null) {
-				url = "jdbc:mysql://localhost:3306/proyectoud2_ariel_abel";
+				url = "jdbc:mysql://dam-aad-ud2.mysql.database.azure.com:3306/proyectoud2_ariel_abel";
 			}
 			if (user == null) {
-				user = "jdbc";
+				user = "usuario_artistas";
 			}
 			if (password == null) {
-				password = "jdbc";
+				password = "yYTng2wg";
 			}
 
 			// Crear conexión

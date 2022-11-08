@@ -70,7 +70,9 @@
 					<execution>
 						<id>default-cli</id>
 						<configuration>
-							<mainClass>com.github.cgainstitution.proyectoud1arielabel.app.UltimoFMApplication</mainClass>
+							<mainClass>
+								com.github.cgainstitution.proyectoud1arielabel.app.UltimoFMApplication
+							</mainClass>
 							<launcher>app</launcher>
 							<jlinkZipName>app</jlinkZipName>
 							<jlinkImageName>app</jlinkImageName>
